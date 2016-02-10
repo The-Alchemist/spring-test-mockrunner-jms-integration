@@ -58,7 +58,7 @@ public class JmsResourceCandidateResolver extends SimpleAutowireCandidateResolve
             if(resource.lookup() == null && resource.lookup().isEmpty()) {
                 throw new IllegalStateException("Could not inject a Queue because the @Resource annotation was missing a @Resource(lookup=....)");
             } else {
-                return resource.name();
+                return resource.lookup();
             }
         }
         return null;
