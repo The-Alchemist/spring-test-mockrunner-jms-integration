@@ -55,7 +55,7 @@ public class JmsResourceCandidateResolver extends SimpleAutowireCandidateResolve
     private String getJmsQueueName(Annotation[] annotations) {
         for (Annotation ann : annotations) {
             Resource resource = AnnotationUtils.getAnnotation(ann, Resource.class);
-            if(resource.name() == null) {
+            if(resource.lookup() == null && resource.lookup().isEmpty()) {
                 throw new IllegalStateException("Could not inject a Queue because the @Resource annotation was missing a @Resource(lookup=....)");
             } else {
                 return resource.name();
